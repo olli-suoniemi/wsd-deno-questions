@@ -1,0 +1,17 @@
+<% layout('./layouts/layout.eta') %>
+
+<p> The number of answers you have given: <%= it.answers.count %> </p>
+
+<p> The number of correct answers you have given: <%= it.correct_answers.count %> </p>
+
+<p> The number of answers given to the questions created by you: <%= it.answers_given_to_user.count %> </p>
+
+<p> Most answered questions: </p>
+
+<ul>
+    <% it.five_most_answered_users.forEach((user) => { %>
+        <li>
+            <%= user.email %> <%= user.count %>
+        </li>
+    <% }); %>
+</ul>

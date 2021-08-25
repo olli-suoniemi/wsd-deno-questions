@@ -1,0 +1,16 @@
+<% layout('./layouts/layout.eta') %>
+
+<% if (it.incorrect) { %>
+
+    <button type="button" class="button button-clear"> Incorrect! </button>
+    </br>
+    <button type="button" class="button button-clear"> The correct option was <%= it.right_answer %> </button>
+    </br>
+<% } else { %>
+
+    <button type="button" class="button button-clear"> Correct! </button>
+    </br>
+
+<% } %>
+
+<button type="button" class="button button-outline"> <a href="/quiz"> Next question -> </a> </button>

@@ -1,0 +1,24 @@
+<% layout("./layouts/layout.eta") %>
+
+
+
+<form method="POST" action="/auth/register">
+    Email:<br/>
+    <input type="email" placeholder="user@email.com" name="email" value="<%= it.registrationData ? it.registrationData.email : "" %>"/>
+    <br/>
+    Password:<br/>
+    <input type="password" name="password" /><br/>
+    <input type="submit" value="Register" />
+</form>
+
+<% if (it.registrationData) { %>
+<ul>
+    <% Object.keys(it.registrationData.validationErrors).forEach((attribute) => { %>
+        <% Object.values(it.registrationData.validationErrors[attribute]).forEach((err) => { %>
+            <li><%= err %></li>
+        <% }); %>
+    <% }); %>
+</ul>
+<% } %>
+
+<a href="/auth/login">Already registered? Login here.</a>

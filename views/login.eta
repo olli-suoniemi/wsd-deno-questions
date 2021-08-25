@@ -1,0 +1,21 @@
+<% layout("./layouts/layout.eta") %>
+
+<form method="POST" action="/auth/login">
+  Email:<br/>
+  <input type="email" placeholder="user@email.com" name="email" /><br/>
+  Password:<br/>
+  <input type="password" name="password" /><br/>
+  <button type="submit"> Login </button>
+</form>
+
+<% if (it.loginData) { %>
+<ul>
+    <% Object.keys(it.loginData.validationErrors).forEach((attribute) => { %>
+        <% Object.values(it.loginData.validationErrors[attribute]).forEach((err) => { %>
+            <li><%= err %></li>
+        <% }); %>
+    <% }); %>
+</ul>
+<% } %>
+
+<a href="/auth/register">Not yet registered? Register here.</a>

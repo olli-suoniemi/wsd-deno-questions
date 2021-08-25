@@ -1,0 +1,49 @@
+<% layout("./layouts/layout.eta") %>
+
+<a href="/questions"><h3>All questions</h3></a>
+
+<h2>Category: <%= it.question.title %></h2>
+<h2><%= it.question.question_text %></h2>
+
+<form method="POST" action="/questions/<%= it.question.id %>/options">
+  Add an answer option:
+
+  <br/>
+  <textarea name="option_text"><%= it.optionData ? it.optionData.option_text : "" %></textarea>
+  </br>
+  <input type="submit" value="Create question option" />
+  Correct? <input type="checkbox" name="is_correct">
+</form>
+
+<% if (it.optionData) { %>
+<ul>
+    <% Object.keys(it.optionData.validationErrors).forEach((attribute) => { %>
+        <% Object.values(it.optionData.validationErrors[attribute]).forEach((err) => { %>
+            <li><%= err %></li>
+        <% }); %>
+    <% }); %>
+</ul>
+<% } %>
+
+<% if (it.options && it.options.length > 0) { %>
+
+  <ul> 
+  <% it.options.forEach((option) => { %>
+    <li>
+      <button type="button" class="button button-clear"/> <%= option.option_text %>, correct = <%= option.is_correct %> </button>
+      <form method="POST" action="/questions/<%= option.question_id %>/options/<%= option.id %>/delete" style="display: inline;">
+        <button type="submit" class="button button-outline"/> Delete option </button>
+      </form>
+    </li>
+  <% }); %>
+  </ul>
+
+<% } else { %>
+
+<p>No answer options available. Delete question?</p>
+<form method="POST" action="/questions/<%= it.question.id %>/delete">
+        <input type="submit" value="Delete question" />
+</form>
+<% } %>
+
+
