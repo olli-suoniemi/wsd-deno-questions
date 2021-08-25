@@ -9,3 +9,5 @@
 <a href="/quiz"><h3>Get random question<h3></a>
 </br>
 <a href="/statistics"><h3>Show statistics<h3></a>
+</br>
+<a href="/auth/logout"><h3>Logout</h3>

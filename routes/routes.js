@@ -6,6 +6,7 @@ import * as statisticsController from "./controllers/statisticsController.js"
 import * as registrationController from "./controllers/registrationController.js";
 import * as loginController from "./controllers/loginController.js";
 import * as apiController from "./apis/apiController.js";
+import * as logoutController from "./controllers/logoutController.js";
 
 const router = new Router();
 
@@ -40,5 +41,7 @@ router.post("/auth/login", loginController.processLogin);
 
 router.get("/api/questions/random", apiController.getRandomQuestion);
 router.post("/api/questions/answer", apiController.answerQuestion);
+
+router.get("/auth/logout", logoutController.logout);
 
 export { router };
