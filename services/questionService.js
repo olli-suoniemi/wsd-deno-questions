@@ -13,7 +13,7 @@ const addQuestion = async (userId, title, question_text) => {
 
 const getQuestions = async ( id ) => {
     const res = await executeQuery(
-        "SELECT * FROM questions WHERE user_id = $1;",
+        "SELECT * FROM questions WHERE user_id = $1 ORDER BY title;",
           id
     );
 

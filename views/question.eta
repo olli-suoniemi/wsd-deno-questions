@@ -1,38 +1,42 @@
 <% layout("./layouts/layout.eta") %>
 
-<a href="/questions"><h3>All questions</h3></a>
+<a href="/questions" class="paper-btn btn-default"><h2> <- Back to questions</h2></a>
 
-<h2>Category: <%= it.question.title %></h2>
-<h2><%= it.question.question_text %></h2>
+<h2><ins>Category: <%= it.question.title %></ins></h2>
+<h3><%= it.question.question_text %></h3>
 
-<form method="POST" action="/questions/<%= it.question.id %>/options">
+<form method="POST" action="/questions/<%= it.question.id %>/options" >
   Add an answer option:
 
   <br/>
   <textarea name="option_text"><%= it.optionData ? it.optionData.option_text : "" %></textarea>
   </br>
-  <input type="submit" value="Create question option" />
-  Correct? <input type="checkbox" name="is_correct">
+  <button type="submit" class="btn-default" style="display: inline;"/> Create question option </button>
+  Correct? <input type="checkbox" name="is_correct" style="display: inline;">
 </form>
 
 <% if (it.optionData) { %>
 <ul>
     <% Object.keys(it.optionData.validationErrors).forEach((attribute) => { %>
         <% Object.values(it.optionData.validationErrors[attribute]).forEach((err) => { %>
-            <li><%= err %></li>
+            <div class="row flex-spaces">
+                <div class="alert alert-danger"><%= err %></div>
+            </div>
         <% }); %>
     <% }); %>
 </ul>
 <% } %>
+
+</br> </br> 
 
 <% if (it.options && it.options.length > 0) { %>
 
   <ul> 
   <% it.options.forEach((option) => { %>
     <li>
-      <button type="button" class="button button-clear"/> <%= option.option_text %>, correct = <%= option.is_correct %> </button>
+      <button type="button"/> <%= option.option_text %>, correct = <%= option.is_correct %> </button>
       <form method="POST" action="/questions/<%= option.question_id %>/options/<%= option.id %>/delete" style="display: inline;">
-        <button type="submit" class="button button-outline"/> Delete option </button>
+        <button type="submit"/> Delete option </button>
       </form>
     </li>
   <% }); %>

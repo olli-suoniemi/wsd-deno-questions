@@ -1,7 +1,6 @@
 <% layout("./layouts/layout.eta") %>
 
-
-
+<h1></h1>
 <form method="POST" action="/auth/register">
     Email:<br/>
     <input type="email" placeholder="user@email.com" name="email" value="<%= it.registrationData ? it.registrationData.email : "" %>"/>
@@ -15,7 +14,9 @@
 <ul>
     <% Object.keys(it.registrationData.validationErrors).forEach((attribute) => { %>
         <% Object.values(it.registrationData.validationErrors[attribute]).forEach((err) => { %>
-            <li><%= err %></li>
+            <div class="row flex-spaces">
+                <div class="alert alert-danger"><%= err %></div>
+            </div>
         <% }); %>
     <% }); %>
 </ul>

@@ -1,5 +1,5 @@
 <% layout('./layouts/layout.eta') %>
-
+<h1></h1>
 <p> The number of answers you have given: <%= it.answers.count %> </p>
 
 <p> The number of correct answers you have given: <%= it.correct_answers.count %> </p>

@@ -1,13 +1,13 @@
 <% layout("./layouts/layout.eta") %>
 
-<h2>Your questions. Click to edit.</h2>
+<h2><ins>Your questions. Click to edit.</ins></h2>
 
 <% if (it.questions && it.questions.length > 0) { %>
 
   <ul> 
   <% it.questions.forEach((question) => { %>
     <li>
-      <button type="button" class="button button-outline"/> <a href="/questions/<%= question.id %>"> <%= question.title %>, <%= question.question_text %> </a> </button>
+      <a href="/questions/<%= question.id %>" class="paper-btn"> <%= question.title %>, <%= question.question_text %> </a>
     </li>
   <% }); %>
   </ul>
@@ -18,28 +18,22 @@
 
 <% } %>
 
-</br>
-</br>
-
-<h2>Add a new question!<h2>
-
+<h2><ins>Add a new question!</ins></h2>
 <form method="POST" action="/questions">
   Title:
-  <br/>
   <input type="text" name="title" value="<%= it.questionData ? it.questionData.title : "" %>"/>
-  <br/>
   Question:
-  <br/>
   <textarea name="question_text"><%= it.questionData ? it.questionData.question_text : "" %></textarea>
-  <br/>
-  <input type="submit" value="Add"/>
+  <button type="submit" class="btn-large" /> Add </button>
 </form>
 
 <% if (it.questionData) { %>
 <ul>
     <% Object.keys(it.questionData.validationErrors).forEach((attribute) => { %>
         <% Object.values(it.questionData.validationErrors[attribute]).forEach((err) => { %>
-            <li><%= err %></li>
+            <div class="row flex-spaces">
+                <div class="alert alert-danger"><%= err %></div>
+            </div>
         <% }); %>
     <% }); %>
 </ul>

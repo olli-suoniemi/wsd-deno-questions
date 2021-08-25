@@ -28,7 +28,9 @@ const registerUser = async ({ request, response, render }) => {
     registrationData.password = await bcrypt.hash(registrationData.password)
     if (!passes || user_exists.length !== 0) {
         registrationData.validationErrors = errors;
-        registrationData.validationErrors.email = { reserved: "email is already in use"}
+        if (user_exists.length !==0 ) { 
+            registrationData.validationErrors.email = { reserved: "email is already in use"}
+        }
         render("registration.eta", {
           registrationData: registrationData });
     } else {
