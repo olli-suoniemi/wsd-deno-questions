@@ -1,17 +1,5 @@
 <% layout('./layouts/layout.eta') %>
 
-
-<h1> Welcome to Question Quiz </h1> 
-<p>This app was built on an online course called Web Software Development 2021 offered by Aalto University.</p>
-<p>Aim of the final project and course was to develop and improve web development skills and learn how to construct and design web applications
-which are structually sound and secure.</p>
-
-<p>This app can be used for creating quizzes from your own and other people's created questions. This tool is handy for teachers and students
-who are looking for a easy way to create flashcards out of your own topics.</p>
-
-<p>If you have already registered, just <a href="/auth/login">sign in</a> and start cracking! If it's your first time here, 
-you can start quizzing by <a href="/auth/register">registering!</a> </p> 
-
 <% if (it.user) { %>
 
     <a href="/quiz"><h3>Start quizzing here!</h3></a>
@@ -22,9 +10,20 @@ you can start quizzing by <a href="/auth/register">registering!</a> </p>
 
 <% } else { %>
 
-<a href="/auth/login"><h3>Login here</h3></a>
+    <h1> Welcome to Question Quiz </h1> 
+    <p>This app was built on an online course called Web Software Development 2021 offered by Aalto University.</p>
+    <p>Aim of the final project and course was to develop and improve web development skills and learn how to construct and design web applications
+    which are structually sound and secure.</p>
 
-<a href="/auth/register"><h3>Register here</h3></a>
+    <p>This app can be used for creating quizzes from your own and other people's created questions. This tool is handy for teachers and students
+    who are looking for a easy way to create flashcards out of your own topics.</p>
+
+    <p>If you have already registered, just <a href="/auth/login">sign in</a> and start cracking! If it's your first time here, 
+    you can start quizzing by <a href="/auth/register">registering!</a> </p> 
+
+    <a href="/auth/login"><h3>Login here</h3></a>
+
+    <a href="/auth/register"><h3>Register here</h3></a>
 
 <% } %>
 
