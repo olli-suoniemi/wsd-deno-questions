@@ -1,5 +1,5 @@
 <% layout('./layouts/layout.eta') %>
-<h1></h1>
+</br>
 <button class="btn-large"> <%= it.question.question_text %> </button>
 <% if (it.answer_options && it.answer_options.length > 0) { %>
     <ul>

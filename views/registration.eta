@@ -15,7 +15,11 @@
     <% Object.keys(it.registrationData.validationErrors).forEach((attribute) => { %>
         <% Object.values(it.registrationData.validationErrors[attribute]).forEach((err) => { %>
             <div class="row flex-spaces">
-                <div class="alert alert-danger"><%= err %></div>
+                <input class="alert-state" id="<%=attribute%>" type="checkbox">
+                <div class="alert alert-danger dismissible">
+                    <%= err %>
+                    <label class="btn-close" for="<%=attribute%>">X</label>
+                </div>
             </div>
         <% }); %>
     <% }); %>

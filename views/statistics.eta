@@ -6,7 +6,7 @@
 
 <p> The number of answers given to the questions created by you: <%= it.answers_given_to_user.count %> </p>
 
-<p> Most answered questions: </p>
+<p> 5 most answered users: </p>
 
 <ul>
     <% it.five_most_answered_users.forEach((user) => { %>

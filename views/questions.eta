@@ -1,6 +1,6 @@
 <% layout("./layouts/layout.eta") %>
 
-<h2><ins>Your questions. Click to edit.</ins></h2>
+<h3><ins>Your questions. Click to edit.</ins></h3>
 
 <% if (it.questions && it.questions.length > 0) { %>
 
@@ -18,13 +18,13 @@
 
 <% } %>
 
-<h2><ins>Add a new question!</ins></h2>
+<h3><ins>Add a new question!</ins></h3>
 <form method="POST" action="/questions">
   Title:
   <input type="text" name="title" value="<%= it.questionData ? it.questionData.title : "" %>"/>
   Question:
   <textarea name="question_text"><%= it.questionData ? it.questionData.question_text : "" %></textarea>
-  <button type="submit" class="btn-large" /> Add </button>
+  <button type="submit" class="btn-default" /> Add </button>
 </form>
 
 <% if (it.questionData) { %>
@@ -32,9 +32,14 @@
     <% Object.keys(it.questionData.validationErrors).forEach((attribute) => { %>
         <% Object.values(it.questionData.validationErrors[attribute]).forEach((err) => { %>
             <div class="row flex-spaces">
-                <div class="alert alert-danger"><%= err %></div>
+                <input class="alert-state" id="<%=attribute%>" type="checkbox">
+                <div class="alert alert-danger dismissible">
+                    <%= err %>
+                    <label class="btn-close" for="<%=attribute%>">X</label>
+                </div>
             </div>
         <% }); %>
     <% }); %>
 </ul>
 <% } %>
+

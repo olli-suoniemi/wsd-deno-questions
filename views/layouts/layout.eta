@@ -8,45 +8,67 @@
     <title>Question Quiz</title>
     <style>
       footer {
-        position : fixed;
+        position: absolute;
+        bottom: 0;
         left:0;
-        bottom : 0;
         width: 100%;
         background-color: rgb(192,192,192);
         color: black;
         text-align: center;
+        height: 2.5rem;  
+      }
+
+      #page-container {
+        position: relative;
+        min-height: 100vh;
+      }
+
+      #content-wrap {
+        padding-bottom: 2.5rem;    /* Footer height */
       }
     </style>
 </head>
 <body>
-    <nav class="border fixed split-nav">
+  <div id="page-container">
+    <div id="content-wrap">
+
+      <nav class="border fixed split-nav">
         <div class="nav-brand">
-          <h3><a href="/">QUESTION QUIZ</a></h3>
+          <h4><a href="/">QUESTION QUIZ</a></h4>
         </div>
         <div class="collapsible">
-            <input id="collapsible1" type="checkbox" name="collapsible1">
+          <input id="collapsible1" type="checkbox" name="collapsible1">
             <label for="collapsible1">
               <div class="bar1"></div>
               <div class="bar2"></div>
             </label>
             <div class="collapsible-body">
-                <ul class="inline">
-                    <li><a href="/auth/login">Login</a></li>
-                    <li><a href="/auth/logout">Logout</a></li>
-                </ul>
+              <% if (it.user) { %>
+              <ul class="inline">
+                <li><a href="/auth/logout">Logout</a></li>
+              </ul>
+              <% }  else { %>
+              <ul class="inline">
+                <li><a href="/auth/login">Login</a></li>
+              </ul>
+              <% } %>
             </div>
         </div>
-    </nav>
-    <div class="container">
+      </nav>
+      <div class="container">
         </br>
         </br>
         <%~ it.body %>
+        </br> 
+        </br>
+      </div>
+
     </div>
 
-    </br> </br>
-    
     <footer>
-      <p>Created by: O S</p>
+      <p>Created by: <span class="badge secondary">O S</span></p>
     </footer>
+
+  </div>
 </body>
 </html>

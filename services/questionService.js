@@ -25,7 +25,6 @@ const getQuestion = async ( id ) => {
         "SELECT * FROM questions WHERE id = $1",
             id
     );
-
     return res.rows[0];
 };
 
@@ -42,7 +41,7 @@ const addOption = async (question_id, option_text, is_correct) => {
 
 const getOptions = async (question_id) => {
   const res = await executeQuery(
-    `SELECT * FROM question_answer_options WHERE question_id = $1`,
+    `SELECT * FROM question_answer_options WHERE question_id = $1 ORDER BY random()`,
       question_id
   );
   return res.rows;
