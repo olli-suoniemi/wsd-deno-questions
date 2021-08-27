@@ -17,7 +17,12 @@ const findUserByEmail = async (email) => {
     );
   
     return result.rows;
-  };
+};
   
-  // ..
-  export { addUser, findUserByEmail };
+const deleteById = async (id) => {
+  await executeQuery(
+    "DELETE FROM users WHERE id = $1",
+      id
+  );
+};
+export { addUser, findUserByEmail, deleteById };
