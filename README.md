@@ -2,7 +2,7 @@
   id SERIAL PRIMARY KEY,
   email VARCHAR(255) UNIQUE,
   password CHAR(60)
-);
+);</code>
 
 CREATE TABLE questions (
   id SERIAL PRIMARY KEY,
@@ -25,7 +25,7 @@ CREATE TABLE question_answers (
   question_answer_option_id INTEGER REFERENCES question_answer_options(id),
   correct BOOLEAN DEFAULT false
 );
-
+<code>
 CREATE UNIQUE INDEX ON users((lower(email)));
 </code>
 
