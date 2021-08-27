@@ -4,6 +4,7 @@
   password CHAR(60)
 );</code>
 <br>
+<br>
 <code>
 CREATE TABLE questions (
   id SERIAL PRIMARY KEY,
@@ -11,6 +12,7 @@ CREATE TABLE questions (
   title VARCHAR(256) NOT NULL,
   question_text TEXT NOT NULL
 );</code>
+<br>
 <br>
 <code>
 CREATE TABLE question_answer_options (
@@ -20,6 +22,7 @@ CREATE TABLE question_answer_options (
   is_correct BOOLEAN DEFAULT false
 );</code>
 <br>
+<br>
 <code>
 CREATE TABLE question_answers (
   id SERIAL PRIMARY KEY,
@@ -28,6 +31,7 @@ CREATE TABLE question_answers (
   question_answer_option_id INTEGER REFERENCES question_answer_options(id),
   correct BOOLEAN DEFAULT false
 );</code>
+<br>
 <br>
 <code>
 CREATE UNIQUE INDEX ON users((lower(email)));
