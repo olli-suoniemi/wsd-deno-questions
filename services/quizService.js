@@ -2,13 +2,15 @@ import { executeQuery } from "../database/database.js";
 
 const getRandomQuestion = async() => {
     const result = await executeQuery(
-        `SELECT questions.id FROM questions 
+        `SELECT questions.id, questions.title, questions.question_text FROM questions 
             INNER JOIN question_answer_options ON questions.id = question_answer_options.question_id 
                 WHERE is_correct = true 
                     ORDER BY RANDOM() 
                         LIMIT 1`
     );
-    return result.rows[0];
+    if (result.rows) {
+        return result.rows[0];
+    }
 };
 
 const addQuestionAnswer = async(user_id, question_id, answer_option_id, is_correct) => {

@@ -6,7 +6,8 @@
     <% it.answer_options.forEach((answer_option) => { %>
         <li>
             <form method="POST" action="/quiz/<%= answer_option.question_id %>/options/<%= answer_option.id %>" style="display: inline;">
-                <button type="submit" class="btn-large"/> <%= answer_option.option_text %> </button>
+                <%= answer_option.option_text %>
+                <button type="submit" class="btn-large"/> Choose </button>
             </form>
         </li>
     <% }); %>

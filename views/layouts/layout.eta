@@ -26,12 +26,13 @@
       #content-wrap {
         padding-bottom: 2.5rem;    /* Footer height */
       }
-
+    
       body {
         background-image: url("../../static/images/background_2.jpg");
         background-position: center;
         background-size: cover;
-      }
+      } 
+      
     </style>
 </head>
 <body>

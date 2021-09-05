@@ -50,7 +50,7 @@ const processLogin = async ({ request, response, state, render }) => {
       await incorrectPasswordOrMissingAccountOcccurs(loginData, render);
   } else {
       await state.session.set("user", user);
-      response.redirect("/");
+      response.redirect("/questions");
   }  
 };
 

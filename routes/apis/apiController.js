@@ -3,7 +3,15 @@ import * as questionService from "../../services/questionService.js";
 
 const getRandomQuestion = async ({ response }) => {
     const question = await quizService.getRandomQuestion();
+    if (!question || question.length === 0) {
+        response.body = {}
+        return
+    }
     const options = await questionService.getOptions(question.id);
+    if (!options || options.length === 0) {
+        response.body = {}
+        return
+    }
 
     const objects = [];
     options.forEach(option => {
@@ -20,7 +28,7 @@ const getRandomQuestion = async ({ response }) => {
         "questionText": question.question_text,
         "answerOptions": objects
     };
-
+    
     response.body = data;
 };
 
