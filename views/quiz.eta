@@ -1,20 +1,29 @@
 <% layout('./layouts/layout.eta') %>
 </br>
-<button class="btn-large"> <%= it.question.question_text %> </button>
-<% if (it.answer_options && it.answer_options.length > 0) { %>
-    <ul>
-    <% it.answer_options.forEach((answer_option) => { %>
-        <li>
-            <form method="POST" action="/quiz/<%= answer_option.question_id %>/options/<%= answer_option.id %>" style="display: inline;">
-                <%= answer_option.option_text %>
-                <button type="submit" class="btn-large"/> Choose </button>
-            </form>
-        </li>
-    <% }); %>
-    </ul>
+
+<% if (it.question) { %>
+    <button class="btn-large"> <%= it.question.question_text %> </button>
+    <% if (it.answer_options && it.answer_options.length > 0) { %>
+        <ul>
+        <% it.answer_options.forEach((answer_option) => { %>
+            <li>
+                <form method="POST" action="/quiz/<%= answer_option.question_id %>/options/<%= answer_option.id %>" style="display: inline;">
+                    <button type="submit" class="btn-large"><%= answer_option.option_text %></button>
+                </form>
+            </li>
+        <% }); %>
+        </ul>
+    <% } else { %>
+
+    <p> This question doesn't have any answer options yet available </p>
+
+    <% } %>
+
 <% } else { %>
 
-<p> This question doesn't have any answer options yet available </p>
+    <h3> This question does not exist </h3> 
+
+    <a href="/quiz" class="paper-btn btn-default"> Get new question? </a>
 
 <% } %>
 

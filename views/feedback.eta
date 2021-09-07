@@ -3,7 +3,6 @@
 <% if (it.incorrect) { %>
 
     <button type="button" class="btn-large btn-danger"> Incorrect! </button>
-    </br>
     <button class="btn-large"> The correct option was <%= it.right_answer %> </button>
     </br>
 <% } else { %>

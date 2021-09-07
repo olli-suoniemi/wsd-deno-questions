@@ -25,7 +25,9 @@ const getQuestion = async ( id ) => {
         "SELECT * FROM questions WHERE id = $1",
             id
     );
-    return res.rows[0];
+    if (res.rows.length > 0) {
+      return res.rows[0];
+    };
 };
 
 const addOption = async (question_id, option_text, is_correct) => {

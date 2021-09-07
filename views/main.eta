@@ -8,6 +8,8 @@
 
     <a href="/statistics"><h3>Show statistics</h3></a>
 
+    <a href="api/questions/random"><h3>Get random API call</h3></a>
+
 <% } else { %>
 
     <h1> Welcome to Question Quiz </h1> 

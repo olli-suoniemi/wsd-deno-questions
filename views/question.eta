@@ -2,54 +2,60 @@
 </br>
 <a href="/questions" class="paper-btn btn-default"><- Back to questions</a>
 
-<h3><ins>Category: <%= it.question.title %></ins></h3>
-<h3><%= it.question.question_text %></h3>
+<% if(it.question) { %>
 
-<form method="POST" action="/questions/<%= it.question.id %>/options" >
-  Add an answer option:
+  <h3><ins>Category: <%= it.question.title %></ins></h3>
+  <h3><%= it.question.question_text %></h3>
 
-  <br/>
-  <textarea name="option_text"><%= it.optionData ? it.optionData.option_text : "" %></textarea>
-  </br>
-  <button type="submit" class="btn-default" style="display: inline;"/> Create question option </button>
-  Correct? <input type="checkbox" name="is_correct" style="display: inline;">
-</form>
+  <form method="POST" action="/questions/<%= it.question.id %>/options" >
+    Add an answer option:
 
-<% if (it.optionData) { %>
-<ul>
-    <% Object.keys(it.optionData.validationErrors).forEach((attribute) => { %>
-        <% Object.values(it.optionData.validationErrors[attribute]).forEach((err) => { %>
-            <div class="row flex-spaces">
-                <input class="alert-state" id="<%=attribute%>" type="checkbox">
-                <div class="alert alert-danger dismissible">
-                    <%= err %>
-                    <label class="btn-close" for="<%=attribute%>">X</label>
-                </div>
-            </div>
-        <% }); %>
-    <% }); %>
-</ul>
-<% } %>
+    <br/>
+    <textarea name="option_text"><%= it.optionData ? it.optionData.option_text : "" %></textarea>
+    </br>
+    <button type="submit" class="btn-default" style="display: inline;"> Create question option </button>
+    Correct? <input type="checkbox" name="is_correct" style="display: inline;">
+  </form>
 
-<% if (it.options && it.options.length > 0) { %>
-
-  <ul> 
-  <% it.options.forEach((option) => { %>
-    <li>
-      <button type="button"/> <%= option.option_text %>, correct = <%= option.is_correct %> </button>
-      <form method="POST" action="/questions/<%= option.question_id %>/options/<%= option.id %>/delete" style="display: inline;">
-        <button type="submit"/> Delete option </button>
-      </form>
-    </li>
-  <% }); %>
+  <% if (it.optionData) { %>
+  <ul>
+      <% Object.keys(it.optionData.validationErrors).forEach((attribute) => { %>
+          <% Object.values(it.optionData.validationErrors[attribute]).forEach((err) => { %>
+              <div class="row flex-spaces">
+                  <input class="alert-state" id="<%=attribute%>" type="checkbox">
+                  <div class="alert alert-danger dismissible">
+                      <%= err %>
+                      <label class="btn-close" for="<%=attribute%>">X</label>
+                  </div>
+              </div>
+          <% }); %>
+      <% }); %>
   </ul>
+  <% } %>
+
+  <% if (it.options && it.options.length > 0) { %>
+
+    <ul> 
+    <% it.options.forEach((option) => { %>
+      <li>
+        <button type="button"/> <%= option.option_text %>, correct = <%= option.is_correct %> </button>
+        <form method="POST" action="/questions/<%= option.question_id %>/options/<%= option.id %>/delete" style="display: inline;">
+          <button type="submit"/> Delete option </button>
+        </form>
+      </li>
+    <% }); %>
+    </ul>
+
+  <% } else { %>
+
+  <p>No answer options available. Delete question?</p>
+  <form method="POST" action="/questions/<%= it.question.id %>/delete">
+          <input type="submit" value="Delete question" />
+  </form>
+  <% } %>
 
 <% } else { %>
 
-<p>No answer options available. Delete question?</p>
-<form method="POST" action="/questions/<%= it.question.id %>/delete">
-        <input type="submit" value="Delete question" />
-</form>
+<h3> Not your question bro. Back off! </h3>
+
 <% } %>
-
-
