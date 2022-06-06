@@ -1,3 +1,17 @@
+<h1> Question Quiz </h1>
+
+This app was built on an online course called Web Software Development 2021 offered by Aalto University.
+
+Aim of the final project and course was to develop and improve web development skills and learn how to construct and design web applications which are structually sound and secure.
+
+This app can be used for creating quizzes from your own and other people's created questions. This tool is handy for teachers and students who are looking for a easy way to create flashcards out of your own topics.
+
+The app can be tested online in [here](https://wsd-deno-questions.herokuapp.com/)
+
+---
+
+<h2> Instructions for local testing </h2>
+
 <code>CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   email VARCHAR(255) UNIQUE,
@@ -39,8 +53,6 @@ CREATE UNIQUE INDEX ON users((lower(email)));
 
 ---
 
-<h1> Question Quiz </h1>
-
 Use the above database table statements to create needed tables to run the program. After this insert 
 your database credentials to the database.js file located in the database-folder. 
 
@@ -54,18 +66,6 @@ Finally, the table question_answers stores answers posted to the questions; each
 
 ---
 
-This app was built on an online course called Web Software Development 2021 offered by Aalto University.
-
-Aim of the final project and course was to develop and improve web development skills and learn how to construct and design web applications which are structually sound and secure.
-
-This app can be used for creating quizzes from your own and other people's created questions. This tool is handy for teachers and students who are looking for a easy way to create flashcards out of your own topics.
-
----
-
-The app can be tested online in [here](https://wsd-deno-questions.herokuapp.com/)
-
----
-
 In order to run the program locally you have to install Deno. [Installation guidelines for Deno](https://deno.land/manual/getting_started/installation). <br>Use version 1.11.5. You can set it by command: <code> deno upgrade --version 1.11.5 </code><br>
 
 ---
@@ -76,6 +76,8 @@ In order to run the app locally use this command in the root of the application:
 <code>deno run --unstable --allow-all --watch run-locally.js</code>
 
 ---
+
+<h2> Credits </h2>
 
 Credits for the background image:
 
