@@ -1,13 +1,9 @@
 import { Pool } from "../deps.js";
 
+const DATABASE_URL = Deno.env.get("DATABASE_URL");
+
 const CONCURRENT_CONNECTIONS = 2;
-const connectionPool = new Pool({
-  hostname: "batyr.db.elephantsql.com",
-  database: "uhfxcrye",
-  user: "uhfxcrye",
-  password: "fHruoJznyWRXBV_Hrd1v8uxwKmxTDpNd",
-  port: 5432,
-}, CONCURRENT_CONNECTIONS);
+const connectionPool = new Pool(DATABASE_URL, CONCURRENT_CONNECTIONS);
 
 const executeQuery = async (query, ...args) => {
   const response = {};
@@ -33,3 +29,5 @@ const executeQuery = async (query, ...args) => {
 };
 
 export { executeQuery };
+
+
